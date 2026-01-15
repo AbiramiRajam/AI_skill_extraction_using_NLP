@@ -278,7 +278,18 @@ def normalize(text):
     return text
 
 # ---------------------- NLP SETUP ---------------------- #
-nlp = spacy.load("en_core_web_sm")
+from spacy.cli import download
+
+@st.cache_resource
+def load_nlp():
+    try:
+        return spacy.load("en_core_web_sm")
+    except OSError:
+        download("en_core_web_sm")
+        return spacy.load("en_core_web_sm")
+
+nlp = load_nlp()
+
 matcher = PhraseMatcher(nlp.vocab, attr="LOWER")  # create matcher once
 
 def build_matcher(tech_stack):
