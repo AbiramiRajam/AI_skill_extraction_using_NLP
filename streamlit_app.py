@@ -45,7 +45,7 @@ with col1:
         pasted_text = st.text_area(
             " ",
             height=300,
-            key="input_text_area",              # unique key
+            key="input_text_area",              #unique key
             label_visibility="collapsed"
         )
 
@@ -84,9 +84,9 @@ with col2:
         " ",
         value=st.session_state.job_description_text,
         height=300,
-        key="output_text_area",                 # ✅ unique key
+        key="output_text_area",                 # unique key
         label_visibility="collapsed",
-        disabled=True                            # optional (read-only)
+        disabled=True                           
     )
 
 
